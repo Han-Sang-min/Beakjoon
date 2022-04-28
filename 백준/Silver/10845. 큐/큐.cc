@@ -1,30 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MX = 1000005;
-int dat[MX];
-int head = 0, tail = 0;
-
-void push(int x) {
-	dat[tail++] = x;
-}
-
-void back() {
-	cout << dat[tail - 1] << "\n";
-}
-
-void front() {
-	cout << dat[head] << "\n";
-}
-
-void pop() {
-	front();
-	head++;
-}
-
 int main(void) {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
 	int n;
 	string cmd;
+	queue<int> que;
 	cin >> n;
 	while (n--)
 	{
@@ -32,26 +15,28 @@ int main(void) {
 		if (cmd == "push") {
 			int a;
 			cin >> a;
-			push(a);
+			que.push(a);
 		}
 		else if (cmd == "pop") {
-			if (head == tail) cout << -1 << "\n";
-			else pop();
+			if (que.empty()) cout << -1 << "\n";
+			else {
+				cout << que.front() << "\n";
+				que.pop();
+			}
 		}
 		else if (cmd == "size") {
-			cout << tail - head << "\n";
+			cout << que.size() << "\n";
 		}
 		else if (cmd == "empty") {
-			if (head == tail) cout << 1 << "\n";
-			else cout << 0 << "\n";
+			cout << que.empty() << "\n";
 		}
 		else if (cmd == "front") {
-			if (head == tail) cout << -1 << "\n";
-			else front();
+			if (que.empty()) cout << -1 << "\n";
+			else cout << que.front() << "\n";
 		}
 		else if (cmd == "back") {
-			if (head == tail) cout << -1 << "\n";
-			else back();
+			if (que.empty()) cout << -1 << "\n";
+			else cout << que.back() << "\n";
 		}
 	}
 }
