@@ -12,11 +12,6 @@
 				if (pap[a][b] != pap[i][j]) return false;
 		return true;
 	}
-	/*
-	for (int i = a; i < n + a - 1; i++)
-		for (int j = b; j < n + b - 1; j++)
-			if (pap[i][j] != pap[i + 1][j + 1]) return false;
-	*/
 	void proc(int a, int b, int n)
 	{
 		if (is_ok(a, b, n))
@@ -29,7 +24,6 @@
 			for (int j = 0; j < 3; j++)
 				proc(a + i * tn, b + j * tn, tn);
 	}
-
 	int main(void) {
 		ios::sync_with_stdio(0);
 		cin.tie(0);
